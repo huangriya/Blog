@@ -18,40 +18,40 @@ module.exports = function(app) {
 		model.count({}, function(err, count) {
 			// count：总条数
 			if (err) {
-				console.log(err);
-			} else {
-				// 如果总条数大于0，继续执行
-				if (count > 0) {
-					// 查询当前页数据
-					// sort: 排序
-					// time: 根据time字段排序 -1 倒叙
-					model.find({}, {sort: {time: -1}}, function(err, docs) {
-						if (err) {
-							// 查询内容出错控制台输出
-							console.log('查询内容:' + err)
-						} else {
-							res.render('index', {
-								code: 0,
-								data: docs,
-								page: queryPage - 0,
-								number: 30,
-								PageCount: count
-							})
-						}
-					// skip: 起始条数，从number条往后30条
-					// limit: 往后第多少条
-					}).skip(number).limit(30);
-				} else {
-					// 总条数小于0，直接返回空数据
-					res.json({
-						code: -10,
-						msg: '没有查询到任何数据'
+				console.log('查询总条数:' + err);
+				return;
+			}
+			// 如果总条数大于0，继续执行
+			if (count > 0) {
+				// 查询当前页数据
+				// sort: 排序
+				// time: 根据time字段排序 -1 倒叙
+				model.find({}, {sort: {time: -1}}, function(err, docs) {
+					if (err) {
+						console.log('查询内容:' + err);
+						return;
+					}
+					res.render('index', {
+						code: 0,
+						data: docs,
+						page: queryPage - 0,
+						number: 30,
+						PageCount: count
 					})
-				}
+				// skip: 起始条数，从number条往后30条
+				// limit: 往后第多少条
+				}).skip(number).limit(30);
+			} else {
+				// 总条数小于0，直接返回空数据
+				res.json({
+					code: -10,
+					msg: '没有查询到任何数据'
+				})
 			}
 		})
 	})
 
+	// 添加文档
 	app.post('/word/add', function(req, res) {
 
 	})
