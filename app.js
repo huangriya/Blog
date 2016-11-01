@@ -13,5 +13,6 @@ word(app);
 
 // 监听一个端口号启动服务
 app.listen(1688, function() {
+	console.log("提交成功");
 	console.log("启动成功");
 });
