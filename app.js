@@ -11,6 +11,8 @@ app.set('view engine', 'ejs'); //设置模板引擎名称
 var word = require('./routes/word');
 word(app);
 
+
+
 // 监听一个端口号启动服务
 app.listen(1688, function() {
 	console.log("启动成功");
