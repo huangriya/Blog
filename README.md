@@ -1,3 +1,2 @@
 # Blog
-个人博客</br>
-后端：nodejs + expressjs + mongodb</br>
+个人博客，记录自我
