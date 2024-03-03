@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script>
+      // 阻塞代码运行一段时间
+      function blocked(duration) {
+        const start = Date.now()
+        while (Date.now() - start < duration) {}
+        console.log('这段代码执行完毕，耗时' + duration / 1000 + '秒')
+      }
+    </script>
+  </head>
+  <body>
+    <script>
+      blocked(1000)
+    </script>
+
+
+     <!-- 我会在上面这段js执行完成后才显示 -->
+    <h1>script标签阻塞渲染测试，我将在上面js代码执行完成后才显示</h1>
+  </body>
+</html>
