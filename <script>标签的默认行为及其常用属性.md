@@ -89,6 +89,14 @@
 </html>
 ```
 
+#### 通过DOM API动态添加的script元素是以异步方式加载的，相当于给其添加了async属性
+
+```javascript
+let script = document.createElement('script');
+script.src = 'js/demo.js';
+document.head.appendChild(script);
+```
+
 
 ## 常用属性如下
 
@@ -109,7 +117,9 @@
 - defer脚本按照它们出现的顺序执行
 - defer脚本在DOMContentLoaded事件之前执行
 
+#### type=module
+当type=module时，js脚本会支持es6模块加载方式，而且只有这样代码中才能出现import和export关键字。
 
-## 图解浏览器解析script过程
+## 图解script标签解析过程
 
 ![Alt text](images/script.png)
